@@ -11,7 +11,7 @@ class CognitiveCarePlanValueSet(ValueSet):
 
 class CognitiveDeclineProtocol(ClinicalQualityMeasure):
     class Meta:
-        title = 'Cognitive Decline Management'
+        title = 'Brain Health Care Plan'
 
     def in_initial_population(self) -> bool:
         structured_assessments = self.patient.interviews.find(StandardizedToolsForAssessmentOfCognition)
@@ -33,7 +33,7 @@ class CognitiveDeclineProtocol(ClinicalQualityMeasure):
         else:
             if self.in_numerator():
                 result.status = STATUS_SATISFIED
-                result.add_narrative('Cognitive care plan is in place and no conflicts found.')
+                result.add_narrative('No Modifiable risk factors founds. Brain Health Care Plan is generated.')
             else:
                 result.status = STATUS_DUE
                 result.add_narrative('Patient has modifiable risk factors for cognitive decline.')
